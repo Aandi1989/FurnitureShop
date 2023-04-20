@@ -1,0 +1,26 @@
+@import './fonts.scss';
+@import './common.scss';
+@import '../static/fonts/icons-v1.0/style.css';
+
+// Шрифт по умолчанию 
+$fontFamily:'Roboto Flex';
+$fontSize:16;
+// /Шрифт по умолчанию 
+
+body{
+  font-family: 'Roboto Flex', sans-serif;
+  font-size: 20px;
+}
+
+.text1 {
+  font-weight: 400;
+}
+.text2 {
+  font-weight: 500;
+}
+.text3 {
+  font-weight: 600;
+}
+.text4 {
+  font-weight: 700;
+}
