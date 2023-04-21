@@ -1,6 +1,7 @@
 @import './fonts.scss';
 @import './common.scss';
-// Иконочные шрифты
+@import './mixins.scss';
+// Иконочные шрифт
 @import '../static/fonts/icons-v1.0/style.css';
 // /Иконочные шрифты
 
@@ -15,12 +16,39 @@ $md2:480px;
 
 $mainColor:#3a3a3a;
 $orangeColor:#E89F71;
+$lightOrangeColor:#f9f1e6;
 $grayColor:#898989;
 $darkGrayColor:#616161;
+$blackColor:#333;
+$whiteColor:#fff;
+// /Переменные
+
+@mixin adaptive-value($property, $startSize, $minSize, $type){
+  $addSize: $startSize - $minSize;
+  @if $type==1{
+      //Только если меньше контейнера
+      #{$property}: $startSize + px;
+      @media (max-width: #{$maxWidthContainer + px}){
+          #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer - 320}));
+      }
+  }@else if $type==2 {
+       //Только если больше контейнера
+       #{$property}: $startSize + px;
+       @media (min-width: #{$maxWidthContainer + px}){
+           #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+       }
+  }@else {
+      // Всегда
+           #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+  }
+}
 
 // Основная сетка=====================================================
-body._lock{
-  overflow: hidden;
+body{
+  background-color:$lightOrangeColor;
+  &._lock{
+    overflow: hidden;
+  }
 }
 
 ._container{
@@ -40,6 +68,186 @@ body._lock{
   }
 }
 // Header============================================================
+.header {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  &__wrapper {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 50;
+  }
+  &__container {}
+  &__body {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    min-height: 125px;
+
+  }
+  &__main {
+    display: flex;
+    align-items:center;
+    flex: 0 0 494/1240 * 100%;
+  }
+  &__logo {
+    color:$blackColor;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29 / 24 * 100%;
+  }
+  &__menu {
+
+  }
+  &__search {
+    @media (min-width:$md2){
+      flex: 1 1 auto;
+    }
+  }
+  &__actions {}
+}
+
+.menu {
+  flex: 0 1 420px;
+  &__body {}
+  &__list {
+    @media (min-width:$md3){
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+    }
+  }
+  &__item {
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0px 3px;
+    padding: 5px 0px;
+    position: relative;
+    @media (any-hover: hover){ /*будет работать везде где есть мышь. на тач-скринах работать не будет*/
+      &:hover{
+        .menu__subList{
+          transform: translate(0px, 0px);
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+        }
+        .menu__arrow{
+          transform: rotate(-180deg);
+        }
+        .menu__arrow,.menu__link{
+          color:$orangeColor;
+        }
+      }
+    }
+    @media (min-width:$md3){/*для устройств с расширением больше 767 и имеющим тачскрины*/
+      &._hover{
+        .menu__subList{
+          transform: translate(0px, 0px);
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+        }
+        .menu__arrow{
+          transform: rotate(-180deg);
+        }
+        .menu__arrow,.menu__link{
+          color:$orangeColor;
+        }
+      }
+    }
+  }
+  &__link {
+    font-weight: 500;
+    color:inherit;
+    transition: color 0.3s ease 0s;
+  }
+  &__arrow {
+    margin:0px 0px 0px 8px;
+    transition: all 0.3s ease 0s;
+    font-size: 8px;
+    background-color:transparent;
+  }
+  &__subList {
+    position: relative;
+    background-color:#E89F71;
+    padding: 15px;
+    flex: 1 1 100%;
+    @media (min-width:$md3){
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease 0s;
+      transform: translate(0px, 10px);
+      min-width: 200px;
+      left: 0;
+      pointer-events: none;
+      position: absolute;
+      top: 100%;
+
+    }
+  }
+  &__subItem {
+    &:not(:last-child){
+      margin:0px 0px 5px 0px;
+    }
+  }
+  &__subLink {
+    color:$whiteColor;
+    line-height: 1.2;
+  }
+}
+.searchForm {
+  max-width: 473px;
+  &__icon {
+    display: none;
+  }
+  &__item {
+    background-color:$whiteColor;
+    display: flex;
+    align-items:center;
+
+  }
+  &__btn {
+    flex: 0 0 45px;
+    height:45px;
+    font-size: 15px;
+    color:$blackColor;
+    background-color:transparent;
+  }
+  &__input {
+    font-size: 14px;
+    color:$darkGrayColor;
+    width: 100%;
+    padding:0px 20px 0px 0px;
+  }
+}
+.actionsHeader {
+  position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: auto;
+  grid-auto-flow:column;
+  align-items:center;
+  // @include adaptive-value("gap", 32, 15, 1); /*миксины не срабатывают в parcel*/
+  gap:32px;
+  &__item {
+    &_favorites {}
+    &_user {}
+  }
+}
+.cartHeader {
+  &__icon {}
+  &__body {}
+  &__list {}
+}
+.cartList {
+}
+.iconMenu {
+}
 
 // /Header===========================================================
 

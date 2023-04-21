@@ -14,7 +14,7 @@
                 <div class="header__container _container">
                     <div class="header__body">
                         <div class="header__main">
-                            <a href="" class="header__log">Funiro.</a>
+                            <a href="" class="header__logo">Funiro.</a>
                             <!-- Стандартное меню -->
                             <!-- <div class="header__menu menu">
                                 <button type="button" class="menu__icon iconMenu">
@@ -32,15 +32,68 @@
                             <div class="header__menu menu"> 
                                 <nav class="menu__body">
                                     <ul class="menu__list">
-                                        <li class="menu__item"><a href="" class="menu__link">Products</a></li>
-                                        <li class="menu__item"><a href="" class="menu__link">Rooms</a></li>
+                                        <li class="menu__item">
+                                            <a href="" class="menu__link">Products</a>
+                                            <button data-spoller class="menu__arrow _icon-arrow-down"></button>
+                                            <ul class="menu__subList">
+                                                <li class="menu__subItem">
+                                                    <a href="" class="menu__subLink">Product #1</a>
+                                                </li>
+                                                <li class="menu__subItem">
+                                                    <a href="" class="menu__subLink">Product #2</a>
+                                                </li>
+                                                <li class="menu__subItem">
+                                                    <a href="" class="menu__subLink">Product #3</a>
+                                                </li>
+                                                <li class="menu__subItem">
+                                                    <a href="" class="menu__subLink">Product #4</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu__item">
+                                            <a href="" class="menu__link">Rooms</a>
+                                            <button data-spoller class="menu__arrow _icon-arrow-down"></button>
+                                            <ul class="menu__subList">
+                                                <li class="menu__subItem">
+                                                    <a href="" class="menu__subLink">Room #1</a>
+                                                </li>
+                                                <li class="menu__subItem">
+                                                    <a href="" class="menu__subLink">Room #2</a>
+                                                </li>
+                                                <li class="menu__subItem">
+                                                    <a href="" class="menu__subLink">Room #3</a>
+                                                </li>
+                                                <li class="menu__subItem">
+                                                    <a href="" class="menu__subLink">Room #4</a>
+                                                </li>
+                                            </ul>
+                                        </li>
                                         <li class="menu__item"><a href="" class="menu__link">Inspirations</a></li>
                                     </ul>
                                 </nav>
                             </div>
                         </div>
-                        <div class="header__search"></div>
-                        <div class="header__actions actionsHeader"></div>
+                        <div class="header__search">
+                            <div class="searchForm">
+                                <button type="button" class="searchForm__icon _icon-search"></button>
+                                <form action="#" class="searchForm__item">
+                                    <button type="submit" class="searchForm__btn _icon-search"></button>
+                                    <input type="text" class="searchForm__input" placeholder="Search for minimalist chair">
+                                </form>
+                            </div>
+                        </div>
+                        <div class="header__actions actionsHeader">
+                            <a href="" class="actionsHeader__item actionsHeader__item_favorites _icon-favorite"></a>
+                            <div class="actionsHeader__item cartHeader">
+                                <a href="" class="cartHeader__icon _icon-cart"></a>
+                                <div class="cartHeader__body">
+                                    <ul class="cartHeader__list cartList"></ul>
+                                </div>
+                                <a href="" class="actionsHeader__item actionsHeader__item_user _ibg">
+                                    <!-- <img src="./static/images/avatar.png" alt="Avatar"> -->
+                                </a>
+                            </div>
+                        </div>
                         <button type="button" class="iconMenu">
                             <span></span>
                             <span></span>
