@@ -1,26 +1,48 @@
 @import './fonts.scss';
 @import './common.scss';
+// Иконочные шрифты
 @import '../static/fonts/icons-v1.0/style.css';
+// /Иконочные шрифты
 
-// Шрифт по умолчанию 
-$fontFamily:'Roboto Flex';
-$fontSize:16;
-// /Шрифт по умолчанию 
+// Переменные
+$minWidth: 320px;
+$maxWidth:1440px;
+$maxWidthContainer:1270px;
+$md1:$maxWidthContainer +12px;
+$md2:990px;
+$md3:767px;
+$md2:480px;
 
-body{
-  font-family: 'Roboto Flex', sans-serif;
-  font-size: 20px;
+$mainColor:#3a3a3a;
+$orangeColor:#E89F71;
+$grayColor:#898989;
+$darkGrayColor:#616161;
+
+// Основная сетка=====================================================
+body._lock{
+  overflow: hidden;
 }
 
-.text1 {
-  font-weight: 400;
+._container{
+  max-width: $maxWidthContainer;
+  padding: 0 15px;
+  margin: 0 auto;
 }
-.text2 {
-  font-weight: 500;
+
+.wrapper{
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  &._loaded{
+
+  }
 }
-.text3 {
-  font-weight: 600;
-}
-.text4 {
-  font-weight: 700;
-}
+// Header============================================================
+
+// /Header===========================================================
+
+// /Основная сетка===================================================
+
+
