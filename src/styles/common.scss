@@ -20,3 +20,13 @@ img{vertical-align: top;}
 h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: inherit;}
 /*--------------------*/
  
+// Общие классы, шаблоны стилей
+._ibg{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    img{
+        display: none;
+    }
+}
+// /Общие классы, шаблоны стилей
