@@ -14,7 +14,7 @@ $maxWidthContainer: 1270;
 $md1: $maxWidthContainer +12px;
 $md2: 990px;
 $md3: 767px;
-$md2: 480px;
+$md4: 480px;
 
 $mainColor: #3a3a3a;
 $orangeColor: #E89F71;
@@ -72,13 +72,22 @@ body {
     align-items: center;
     padding: 5px 0;
     min-height: 125px;
-
+    position: relative;
+    @media(max-width:$md2){
+      min-height: 80px;
+    }
+    @media(max-width:$md3){
+      min-height: 50px;
+    }
   }
 
   &__main {
     display: flex;
     align-items: center;
     flex: 0 0 494/1240 * 100%;
+    @media (max-width:$md2){
+      flex: 1 1 auto;
+    }
   }
 
   &__logo {
@@ -86,13 +95,14 @@ body {
     font-weight: 700;
     font-size: 24px;
     line-height: 29 / 24 * 100%;
+    position: relative;
+    z-index: 5;
   }
 
   &__menu {}
 
   &__search {
     @include adaptive-value("padding-right", 32, 15, 1);
-
     @media (min-width:$md2) {
       flex: 1 1 auto;
     }
@@ -104,7 +114,19 @@ body {
 .menu {
   flex: 0 1 420px;
 
-  &__body {}
+  &__body {
+    @media (max-width:$md3){
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      background-color:#fcf8f3;
+      transition: left 0.3s ease 0s;
+      padding:70px 15px 30px 15px;
+    }
+  }
 
   &__list {
     @media (min-width:$md3) {
@@ -172,6 +194,10 @@ body {
     font-weight: 500;
     color: inherit;
     transition: color 0.3s ease 0s;
+    @media(max-width:$md3){
+      font-size: 24px;
+      font-weight: 600;
+    }
   }
 
   &__arrow {
@@ -179,6 +205,9 @@ body {
     transition: all 0.3s ease 0s;
     font-size: 8px;
     background-color: transparent;
+    @media(max-width:$md3){
+      font-size: 14px;
+    }
   }
 
   &__subList {
@@ -197,7 +226,10 @@ body {
       pointer-events: none;
       position: absolute;
       top: 100%;
-
+      z-index: 5;
+    }
+    @media (max-width: $md3){
+      margin:10px -15px 0px -15px;
     }
   }
 
@@ -228,6 +260,12 @@ body {
   &__icon {
     position: relative;
     z-index: 5;
+    font-size: 22px;
+    color: #262F56;
+    background-color:transparent;
+    @media(min-width:$md2){
+      display: none;
+    }
   }
 
   &__item {
@@ -333,3 +371,4 @@ body {
 // /Header===========================================================
 
 // /Основная сетка===================================================
+
