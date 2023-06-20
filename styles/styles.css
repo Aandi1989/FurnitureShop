@@ -504,6 +504,18 @@ body._lock {
   }
 }
 
+._footerTitle {
+  font-size: 24px;
+  line-height: 120.8333333333%;
+  color: #333;
+  font-weight: 700;
+}
+@media (max-width: 1270px) {
+  ._footerTitle {
+    font-size: calc(20px + 4 * ((100vw - 320px) / 950));
+  }
+}
+
 /*
 // Стандартный Burger
 .iconMenu{
