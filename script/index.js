@@ -26,7 +26,6 @@ function ibg(){
     }
     ibg();
 
-
 // Spollers
 const spollersArray = document.querySelectorAll('[data-spollers]');
 if(spollersArray.length > 0){
@@ -218,13 +217,11 @@ let _slideToggle = (target, duration = 500) => {
 data-spollers="992,max" - спойлеры будут работать только на экранах меньше или равно 992px
 data-spollers="768,min" - спойлеры будут работать только на экранах больше или равно 768px
 Если нужно что бы в блоке открывался только один спойлер добавляем атрибут data-one-spoller
-*/    
+*/ 
 
 
 
 // /Functions.js
-
-
 
 window.onload = function(){ /*функция будет срабатывать когда весь контент на странице загрузится*/
     document.addEventListener("click",documentActions)
@@ -232,18 +229,27 @@ window.onload = function(){ /*функция будет срабатывать �
     // Actions (делегирование события click)
     function documentActions(e){
         const targetElement = e.target;
+        // выпадающие списки пунктов products и rooms
         if(window.innerWidth > 767 && isMobile()){
             if(targetElement.classList.contains('menu__arrow')){
                 targetElement.closest('.menu__item').classList.toggle('_hover');
             }
             if(!targetElement.closest('.menu__item') && document.querySelectorAll('.menu__item._hover').length > 0){
-                removeClasses(document.querySelectorAll('.menu__item._hover'),"_hover");
+                removeClasses(document.querySelectorAll('.menu__item._hover'),"_hover")
             }
         }
+        // выпадающий по клюку инпут поиска
         if(targetElement.classList.contains('searchForm__icon')){
-            document.querySelector('.searchForm').classList.toggle('_active');
+            document.querySelector('.searchForm').classList.toggle('_active');   
         }else if(!targetElement.closest('.searchForm') && document.querySelector('.searchForm._active')){
-            document.querySelector('.searchForm').classList.remove('_active');
+            document.querySelector('.searchForm').classList.remove('_active');  
+        }
+        // Burger menu
+        if(targetElement.closest('.iconMenu')){
+            document.querySelector('.iconMenu').classList.toggle('_active'); 
+            document.querySelector('.menu__body').classList.toggle('_active'); 
+            document.body.classList.toggle('_lock'); 
+            console.log(document.querySelector('.menu__body').classList)
         }
     }
 }
