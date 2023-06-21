@@ -631,6 +631,7 @@ body._lock {
 @media (max-width: 767px) {
   .menuFooter__column {
     margin-bottom: 30px;
+    position: relative;
   }
 }
 @media (max-width: 767px) and (max-width: 1270px) {
@@ -667,6 +668,21 @@ body._lock {
 @media (any-hover: hover) {
   .menuFooter__link:hover {
     color: #E89F71;
+  }
+}
+.menuFooter__arrow {
+  display: none;
+  transition: transform 0.3s ease 0s;
+}
+@media (max-width: 767px) {
+  .menuFooter__arrow {
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: 0;
+  }
+  .menuFooter__arrow._active {
+    transform: rotate(-180deg);
   }
 }
 

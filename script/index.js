@@ -251,5 +251,15 @@ window.onload = function(){ /*функция будет срабатывать �
             document.body.classList.toggle('_lock'); 
             console.log(document.querySelector('.menu__body').classList)
         }
+        // выпадающие списки Footer
+        if(targetElement.classList.contains('menuFooter__title_menu')){
+            document.querySelector('.menuFooter__arrow_menu').classList.toggle('_active'); 
+        }
+        if(targetElement.classList.contains('menuFooter__title_account')){
+            document.querySelector('.menuFooter__arrow_account').classList.toggle('_active'); 
+        }
+        if(targetElement.classList.contains('menuFooter__title_connected')){
+            document.querySelector('.menuFooter__arrow_connected').classList.toggle('_active'); 
+        }
     }
 }

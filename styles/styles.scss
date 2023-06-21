@@ -528,7 +528,7 @@ body{
     }
     @media (max-width:$md3){
       @include adaptive-value("margin-bottom", 30, 15, 1);
-      // position: relative;
+      position: relative;
     }
   }
   // .menuFooter__title
@@ -581,15 +581,19 @@ body{
     }
   }
   // .menuFooter__arrow
-  // &__arrow{
-  //   display: none;
-  //   @media(max-width:$md3){
-  //     display: block;
-  //     position: absolute;
-  //     top: 5px;
-  //     right: 0;
-  //   }
-  // }
+  &__arrow{
+    display: none;
+    transition: transform 0.3s ease 0s;
+    @media(max-width:$md3){
+      display: block;
+      position: absolute;
+      top: 5px;
+      right: 0;
+      &._active{
+        transform:rotate(-180deg)
+      }
+    }
+  }
 }
 .subscribeFooter {
   // .subscribeFooter__title
