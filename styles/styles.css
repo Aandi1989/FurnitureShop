@@ -504,6 +504,79 @@ body._lock {
   }
 }
 
+.footer {
+  margin-top: 200px;
+}
+.footer__body {
+  border-top: 1px solid #D8D8D8;
+  display: grid;
+  grid-template-columns: 250px 1fr 290px;
+  padding-top: 80px;
+  padding-bottom: 60px;
+  column-gap: 80px;
+}
+@media (max-width: 1270px) {
+  .footer__body {
+    padding-top: calc(30px + 50 * ((100vw - 320px) / 950));
+  }
+}
+@media (max-width: 1270px) {
+  .footer__body {
+    padding-bottom: calc(30px + 30 * ((100vw - 320px) / 950));
+  }
+}
+@media (max-width: 1270px) {
+  .footer__body {
+    column-gap: calc(0px + 80 * ((100vw - 320px) / 950));
+  }
+}
+@media (max-width: 1282px) {
+  .footer__body {
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr 290px;
+  }
+}
+@media (max-width: 990px) {
+  .footer__body {
+    display: block;
+  }
+}
+.footer__main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+@media (max-width: 1282px) {
+  .footer__main {
+    grid-column: span 2;
+    margin-bottom: 40px;
+  }
+}
+@media (max-width: 1282px) and (max-width: 1270px) {
+  .footer__main {
+    margin-bottom: calc(30px + 10 * ((100vw - 320px) / 950));
+  }
+}
+.footer__logo {
+  margin: 0px 0px 0.6666666667em 0px;
+}
+.footer__text {
+  color: #898989;
+  line-height: 1.5;
+}
+.footer__text:not(:last-child) {
+  margin: 0px 0px 1em 0px;
+}
+@media (max-width: 990px) {
+  .footer__menu {
+    margin-bottom: 40px;
+  }
+}
+@media (max-width: 990px) and (max-width: 1270px) {
+  .footer__menu {
+    margin-bottom: calc(30px + 10 * ((100vw - 320px) / 950));
+  }
+}
 ._footerTitle {
   font-size: 24px;
   line-height: 120.8333333333%;
@@ -514,6 +587,124 @@ body._lock {
   ._footerTitle {
     font-size: calc(20px + 4 * ((100vw - 320px) / 950));
   }
+}
+
+.contactsFooter {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.contactsFooter__item {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.5;
+  color: #898989;
+  transition: color 0.3s ease 0s;
+}
+.contactsFooter__item::before {
+  margin: 0px 8px 0px 0px;
+}
+.contactsFooter__item:not(:last-child) {
+  margin-bottom: 16px;
+}
+@media (max-width: 1270px) {
+  .contactsFooter__item:not(:last-child) {
+    margin-bottom: calc(10px + 6 * ((100vw - 320px) / 950));
+  }
+}
+@media (any-hover: hover) {
+  .contactsFooter__item:hover {
+    color: #E89F71;
+  }
+}
+
+@media (min-width: 767px) {
+  .menuFooter {
+    display: flex;
+  }
+}
+@media (min-width: 767px) {
+  .menuFooter__column {
+    flex: 0 1 33.333%;
+  }
+}
+@media (max-width: 767px) {
+  .menuFooter__column {
+    margin-bottom: 30px;
+  }
+}
+@media (max-width: 767px) and (max-width: 1270px) {
+  .menuFooter__column {
+    margin-bottom: calc(15px + 15 * ((100vw - 320px) / 950));
+  }
+}
+.menuFooter__title {
+  cursor: default;
+  background-color: transparent;
+}
+@media (min-width: 767px) {
+  .menuFooter__title {
+    margin: 0px 0px 0.6666666667em 0px;
+  }
+}
+.menuFooter__title._active::before {
+  transform: rotate(-180deg);
+}
+.menuFooter__list li:not(:last-child) {
+  margin: 0px 0px 15px 0px;
+}
+@media (max-width: 767px) {
+  .menuFooter__list {
+    padding: 15px 0px 0px 0px;
+  }
+}
+.menuFooter__link {
+  color: #616161;
+  transition: color 0.3s ease 0s;
+  line-height: 1.2;
+  font-weight: 500;
+}
+@media (any-hover: hover) {
+  .menuFooter__link:hover {
+    color: #E89F71;
+  }
+}
+
+.subscribeFooter__title {
+  margin: 0px 0px 0.6666666667em 0px;
+}
+.subscribeFooter__form {
+  display: flex;
+  position: relative;
+}
+.subscribeFooter__button {
+  flex: 0 0 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  background-color: #E89F71;
+  color: #fff;
+  margin: 0px 0px 0px 4px;
+  transition: background-color 0.3s ease 0s;
+}
+@media (any-hover: hover) {
+  .subscribeFooter__button:hover {
+    background-color: #e38a52;
+  }
+}
+.subscribeFooter__input {
+  width: 100%;
+  padding: 0px 12px;
+  background-color: #D9D9D9;
+  color: #616161;
+  font-size: 16px;
+  line-height: 24px;
+}
+.subscribeFooter__input::placeholder {
+  font-size: 16px;
+  line-height: 24px;
 }
 
 /*
