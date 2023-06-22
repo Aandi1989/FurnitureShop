@@ -31,7 +31,6 @@ $darkBlueColor:#262F56;
 
 // Основная сетка=====================================================
 body{
-  background-color:$lightOrangeColor;
   &._lock{
     overflow: hidden;
   }
@@ -420,11 +419,132 @@ body{
 
 // Основная сетка===================================================
 
+// First slider
+.page {
+  flex: 1 1 auto;
+  // .page__mainSlider
+  &__mainSlider {}
+}
+.mainSlider {
+  background:#fcf8f3;
+  // .mainSlider__container
+  &__container {
+    position: relative;
+    @media(min-width:$md2){
+      &::before{
+        content:'';
+        background:#f9f1e7;
+        position: absolute;
+        top: 0;
+        width: 100vw;
+        right: 376px;
+        height: 100%;
+      }
+    }
+  }
+  // .mainSlider__body
+  &__body {
+    padding:140px 0px 0px 0px;
+    position: relative;
+    z-index: 2;
+    @media(max-width:$md2){
+      padding:80px 0px 0px 0px;
+    }
+    @media(max-width:$md3){
+      padding:50px 0px 0px 0px;
+    }
+    @media(min-width:$md2){
+      display: flex;
+    }
+  }
+  // .mainSlider__content
+  &__content {
+    flex: 0 0 494 / 1240 * 100%;
+  }
+  // .mainSlider__slider
+  &__slider {
+    flex: 1 1 auto;
+    min-width: 0; // если swiper находится внутри flex элемента или является flex элементом добавляем это сво-во чтобы он не болел 
+  }
+}
+.contentMain {
+  position: relative;
+  z-index: 5;
+  padding-left: 15px;
+  padding-right: 15px;
+  background:rgba(255 ,255, 255, 0.72);
+  @include adaptive-value("padding-top", 60, 15, 1);
+  @include adaptive-value("padding-bottom", 60, 15, 1);
+  @media(min-width:$md2){
+    @include adaptive-value("padding", 60, 1, 1);
+    background:rgba(255 ,255, 255, 0.9);
+    /* Если браузер поддерживает backdrop-filter */
+    @supports ((-webkit-backdrop-filter: blur(31px)) or (backdrop-filter: blur(31px))){
+      background:rgba(255 ,255, 255, 0.72);
+      backdrop-filter:blur(31px);
+    }
+  }
+  // .contentMain__title
+  &__title {
+    @include adaptive-value ("font-size", 56, 24, 1);
+    font-weight: 700;
+    line-height: 1.2;
+    &:not(:last-child){
+      margin:0px 0px 16px / 56px *1em 0px; // св-во на случай если этот элемент останется последним в блоке - тогда отступ не применится
+    }
+  }
+  // .contentMain__text
+  &__text {
+    @include adaptive-value ("font-size", 20, 16, 1);
+    color:$grayColor;
+    font-weight: 500;
+    line-height: 1.5;
+    &:not(:last-child){
+      margin:0px 0px 48px / 20px *1em 0px;
+    }
+  }
+  // .contentMain__button
+  &__button {
+    font-weight: 600;
+    @include adaptive-value("min-height", 78, 45, 1);
+    @include adaptive-value("font-size", 20, 16, 1);
+    background-color:$orangeColor;
+    @media(any-hover:hover){
+      background:#e38a52;
+    }
+  }
+}
+.sliderMain {
+  // .sliderMain__controls
+  &__controls {}
+  // .sliderMain__body
+  &__body {}
+  // .sliderMain__slide
+  &__slide {}
+  // .sliderMain__image
+  &__image {}
+  // .sliderMain__content
+  &__content {}
+  // .sliderMain__title
+  &__title {}
+  // .sliderMain__text
+  &__text {}
+  // .sliderMain__price
+  &__price {}
+}
+.controlsSliderMain {
+  // .controlsSliderMain__dots
+  &__dots {}
+  // .controlsSliderMain__arrows
+  &__arrows {}
+}
+
+// /First slider
+
 // /Основная сетка===================================================
 
 // Footer
 .footer {
-  margin-top: 200px; //временно чтобы не налазил на header
   // .footer__container
   &__container {}
   // .footer__body
@@ -537,19 +657,6 @@ body{
     background-color:transparent;
     @media (min-width:$md3){
       margin:0px 0px 16px/24px * 1em 0px;
-    }
-    ._init &{ // когда заработает спойлер, элементу добавится класс инит
-      // display: flex;
-      // width: 100%;
-      // flex-direction: row-reverse;
-      // justify-content: space-between;
-      // align-items:center;
-      // @extend ._icon-arrow-down;
-      // &::before{
-      //   // @extend %ic;
-      //   font-size: 12px;
-      //   transition: transform 0.3s ease 0s;
-      // }
     }
     &._active {
       &::before {

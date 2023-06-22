@@ -87,11 +87,18 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 
-/*если укажем размерность в px то не будет работать миксин adaptive-value*/
-/*если укажем размерность в px то не будет работать миксин adaptive-value*/
-body {
-  background-color: #f9f1e6;
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 15px;
+  text-align: center;
+  transition: all 0.3s ease 0s;
+  min-height: 48px;
 }
+
+/*если укажем размерность в px то не будет работать миксин adaptive-value*/
+/*если укажем размерность в px то не будет работать миксин adaptive-value*/
 body._lock {
   overflow: hidden;
 }
@@ -504,9 +511,142 @@ body._lock {
   }
 }
 
-.footer {
-  margin-top: 200px;
+.page {
+  flex: 1 1 auto;
 }
+.mainSlider {
+  background: #fcf8f3;
+}
+.mainSlider__container {
+  position: relative;
+}
+@media (min-width: 990px) {
+  .mainSlider__container::before {
+    content: "";
+    background: #f9f1e7;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    right: 376px;
+    height: 100%;
+  }
+}
+.mainSlider__body {
+  padding: 140px 0px 0px 0px;
+  position: relative;
+  z-index: 2;
+}
+@media (max-width: 990px) {
+  .mainSlider__body {
+    padding: 80px 0px 0px 0px;
+  }
+}
+@media (max-width: 767px) {
+  .mainSlider__body {
+    padding: 50px 0px 0px 0px;
+  }
+}
+@media (min-width: 990px) {
+  .mainSlider__body {
+    display: flex;
+  }
+}
+.mainSlider__content {
+  flex: 0 0 39.8387096774%;
+}
+.mainSlider__slider {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.contentMain {
+  position: relative;
+  z-index: 5;
+  padding-left: 15px;
+  padding-right: 15px;
+  background: rgba(255, 255, 255, 0.72);
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+@media (max-width: 1270px) {
+  .contentMain {
+    padding-top: calc(15px + 45 * ((100vw - 320px) / 950));
+  }
+}
+@media (max-width: 1270px) {
+  .contentMain {
+    padding-bottom: calc(15px + 45 * ((100vw - 320px) / 950));
+  }
+}
+@media (min-width: 990px) {
+  .contentMain {
+    padding: 60px;
+    background: rgba(255, 255, 255, 0.9);
+    /* Если браузер поддерживает backdrop-filter */
+  }
+}
+@media (min-width: 990px) and (max-width: 1270px) {
+  .contentMain {
+    padding: calc(1px + 59 * ((100vw - 320px) / 950));
+  }
+}
+@media (min-width: 990px) {
+  @supports (-webkit-backdrop-filter: blur(31px)) or (backdrop-filter: blur(31px)) {
+    .contentMain {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(31px);
+    }
+  }
+}
+.contentMain__title {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+@media (max-width: 1270px) {
+  .contentMain__title {
+    font-size: calc(24px + 32 * ((100vw - 320px) / 950));
+  }
+}
+.contentMain__title:not(:last-child) {
+  margin: 0px 0px 0.2857142857em 0px;
+}
+.contentMain__text {
+  font-size: 20px;
+  color: #898989;
+  font-weight: 500;
+  line-height: 1.5;
+}
+@media (max-width: 1270px) {
+  .contentMain__text {
+    font-size: calc(16px + 4 * ((100vw - 320px) / 950));
+  }
+}
+.contentMain__text:not(:last-child) {
+  margin: 0px 0px 2.4em 0px;
+}
+.contentMain__button {
+  font-weight: 600;
+  min-height: 78px;
+  font-size: 20px;
+  background-color: #E89F71;
+}
+@media (max-width: 1270px) {
+  .contentMain__button {
+    min-height: calc(45px + 33 * ((100vw - 320px) / 950));
+  }
+}
+@media (max-width: 1270px) {
+  .contentMain__button {
+    font-size: calc(16px + 4 * ((100vw - 320px) / 950));
+  }
+}
+@media (any-hover: hover) {
+  .contentMain__button {
+    background: #e38a52;
+  }
+}
+
 .footer__body {
   border-top: 1px solid #D8D8D8;
   display: grid;

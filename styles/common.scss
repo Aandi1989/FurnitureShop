@@ -29,4 +29,24 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: inherit;}
         display: none;
     }
 }
+
+.btn{
+    display: inline-flex;
+    justify-content: center;
+    align-items:center;
+    padding: 0px 15px;
+    text-align: center;
+    transition: all 0.3s ease 0s;
+    min-height: 48px;
+    
+};
+
+.sliderArrows {
+}
+.sliderArrow {
+  // .sliderArrow_prev
+  &_prev {}
+  // .sliderArrow_next
+  &_next {}
+}
 // /Общие классы, шаблоны стилей
