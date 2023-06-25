@@ -509,8 +509,12 @@ body{
     @include adaptive-value("min-height", 78, 45, 1);
     @include adaptive-value("font-size", 20, 16, 1);
     background-color:$orangeColor;
+    color:$whiteColor;
+    width: 100%;
     @media(any-hover:hover){
-      background:#e38a52;
+      &:hover{
+        background-color:#e38a52;
+      }
     }
   }
 }

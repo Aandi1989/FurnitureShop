@@ -295,7 +295,7 @@ if(document.querySelector('.sliderMain__body')){
         loop:true,
         loopAdditionalSlides:5,
         preloadImages:false,
-        parallax:trus,
+        parallax:true,
         //Dots
         pagination:{
             el:'.controlsSliderMain__dots',
@@ -304,7 +304,7 @@ if(document.querySelector('.sliderMain__body')){
         //Arrows
         navigation:{
             nextEl:'.sliderMain .sliderArrow_next',
-            prevEl:'.sliderMain .sliderArrow_next',
+            prevEl:'.sliderMain .sliderArrow_prev',
         }
     });
 }
