@@ -17,9 +17,6 @@
 /**
  * @param {'min' | 'max'} type
  */
-(function func(){
-  console.log('It works');
-}())
 
 export function useDynamicAdapt(type = 'max') {
   const className = '_dynamic_adapt_'

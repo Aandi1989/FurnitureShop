@@ -58,8 +58,29 @@ body{
   width: 100%;
   top: 0;
   left: 0;
+  min-height: 40px; // задается для того чтобы после прокрутки на 40px срабатывал js и навешивался класс
+  @media(max-width:$md3){
+    min-height: 5px;
+  }
+  &._scroll{
+    .header__wrapper{
+      background-color:rgba(255,255,255,0.8);
+      @media(any-hover:hover){
+        &:hover{
+          background-color:rgba(255,255,255,0.9);
+        }
+      }
+    }
+    .header__body{
+      min-height: 50px;
+      @media(min-width:$md2){
+        min-height: 70px;
+      }
+    }
+  }
   &__wrapper {
-    position: fixed;
+    transition: background-color 0.3s ease 0s;
+    position: fixed; // wrapper фиксированный,а сама шапка будет скролиться вместе со страницей (в js будет добавляться класс при скроле)
     width: 100%;
     left: 0;
     top: 0;
@@ -67,6 +88,7 @@ body{
   }
   &__container {}
   &__body {
+    transition: min-height 0.3s ease 0s;
     display: flex;
     align-items: center;
     padding: 5px 0;

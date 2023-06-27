@@ -205,8 +205,31 @@ body._lock {
   width: 100%;
   top: 0;
   left: 0;
+  min-height: 40px;
+}
+@media (max-width: 767px) {
+  .header {
+    min-height: 5px;
+  }
+}
+.header._scroll .header__wrapper {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+@media (any-hover: hover) {
+  .header._scroll .header__wrapper:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+}
+.header._scroll .header__body {
+  min-height: 50px;
+}
+@media (min-width: 990px) {
+  .header._scroll .header__body {
+    min-height: 70px;
+  }
 }
 .header__wrapper {
+  transition: background-color 0.3s ease 0s;
   position: fixed;
   width: 100%;
   left: 0;
@@ -214,6 +237,7 @@ body._lock {
   z-index: 50;
 }
 .header__body {
+  transition: min-height 0.3s ease 0s;
   display: flex;
   align-items: center;
   padding: 5px 0;

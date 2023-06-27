@@ -358,6 +358,21 @@ window.onload = function(){ /*функция будет срабатывать �
         }
     }
 
+    // Header
+    const headerElememnt = document.querySelector('.header');
+
+    const callback = function (entries, observer){
+        if(entries[0].isIntersecting){
+            headerElememnt.classList.remove('_scroll');
+        }else{
+            headerElememnt.classList.add('_scroll');
+        }
+    };
+
+    const headerObserver = new IntersectionObserver(callback); // есть отдельное видео. вкратце: при прокрутке добавляется на высоту header добавляется класс _scroll
+    headerObserver.observe(headerElememnt);
+
+
 }
 
 
