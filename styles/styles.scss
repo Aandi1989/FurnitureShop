@@ -459,12 +459,23 @@ body{
   }
   // .mainSlider__content
   &__content {
+    align-self:flex-start;
     flex: 0 0 494 / 1240 * 100%;
+    @include adaptive-value("margin-bottom", 80, 15, 1);
+    @media(max-width:$md2){
+      margin: 0px -15px;
+      background-color:rgb(254, 253, 252);
+    }
+    // background:white;
   }
   // .mainSlider__slider
   &__slider {
     flex: 1 1 auto;
     min-width: 0; // если swiper находится внутри flex элемента или является flex элементом добавляем это сво-во чтобы он не болел 
+    align-self:flex-end;
+    @media (min-width:$md2){
+      padding:0px 0px 0px 32px;
+    }
   }
 }
 .contentMain {
@@ -472,7 +483,7 @@ body{
   z-index: 5;
   padding-left: 15px;
   padding-right: 15px;
-  background:rgba(255 ,255, 255, 0.72);
+  // background:rgba(255 ,255, 255, 0.72);
   @include adaptive-value("padding-top", 60, 15, 1);
   @include adaptive-value("padding-bottom", 60, 15, 1);
   @media(min-width:$md2){
@@ -519,28 +530,112 @@ body{
   }
 }
 .sliderMain {
+  display: flex;
+  flex-direction:column;
+  align-items:flex-end;
+  @media (max-width:$md2){
+    align-items:stretch;
+    flex-direction: column-reverse;
+  }
   // .sliderMain__controls
-  &__controls {}
+  &__controls {
+    margin:0px 0px 20px 0px;
+    align-self: stretch;
+    @media (max-width:$md2){
+      margin:10px 0px 20px 0px;
+    }
+  }
   // .sliderMain__body
-  &__body {}
+  &__body {
+    overflow: visible;
+    @media (min-width:$md2){
+      @include adaptive-value("width", 934, 290, 1);
+    }
+    @media(max-width:$md2){
+      margin: 0px -15px;
+    }
+  }
   // .sliderMain__slide
-  &__slide {}
+  &__slide {
+    position: relative;
+  }
   // .sliderMain__image
-  &__image {}
+  &__image {
+    padding:0px 0px 59.1% 0px;
+  }
   // .sliderMain__content
-  &__content {}
+  &__content {
+    min-width: 295px;
+    max-height: 300px;
+    overflow: auto;
+    color:inherit;
+    display: flex;
+    flex-direction: column;
+    @include adaptive-value("padding", 24, 15, 1);
+    // background:rgba(255, 255, 255, 0.9);
+    /*Если браузер поддерживает backdrop-filter*/
+    @supports ((-webkit-backdrop-filter: blur(31px)) or (backdrop-filter: blur(31px))){
+    background:rgba(255 ,255, 255, 0.72);
+    backdrop-filter:blur(31px);
+    }
+    @media (min-width:$md3){
+      position: absolute;
+      min-width: 350px;
+      @include adaptive-value("bottom", 40, 0, 1);
+      @include adaptive-value("right", 40, 0, 1);
+    }
+  }
   // .sliderMain__title
-  &__title {}
+  &__title {
+    @include adaptive-value("font-size", 28, 22, 1);
+    font-weight: 600;
+    line-height: 1.2;
+    &:not(:last-child){
+      margin:0px 0px 4px / 28px *1em 0px;
+    }
+  }
   // .sliderMain__text
-  &__text {}
+  &__text {
+    line-height: 1.5;
+    color:$grayColor;
+    &:not(:last-child){
+      margin:0px 0px 8px / 16px * 1em 0px;
+    }
+  }
   // .sliderMain__price
-  &__price {}
+  &__price {
+    display: flex;
+    flex-direction: row-reverse;
+    line-height: 1.5;
+    align-items:center;
+    font-weight: 600;
+    justify-content: space-between;
+    @include adaptive-value("font-size", 20, 16, 1);
+    &:before{
+      margin:0px 0px 0px 10px;
+      font-size: 12px;
+    }
+  }
 }
 .controlsSliderMain {
+  display: flex;
+  align-items:center;
   // .controlsSliderMain__dots
-  &__dots {}
+  &__dots {
+    flex: 1 1 auto;
+    @media (min-width:$md2){
+      padding:0px 20px 0px 0px;
+    }
+    @media (max-width:$md2){
+      justify-content: center;
+    }
+  }
   // .controlsSliderMain__arrows
-  &__arrows {}
+  &__arrows {
+    @media (max-width:$md2){
+      display: none;
+    }
+  }
 }
 
 // /First slider

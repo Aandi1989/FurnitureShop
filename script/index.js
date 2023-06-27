@@ -1,3 +1,4 @@
+import { useDynamicAdapt } from './dynamicAdaptive/dynamicAdapt.js'
 // Functions.js
 
 // функция проверяющая есть на нашем устройстве тачскрин или нет. изначально 
@@ -217,7 +218,13 @@ let _slideToggle = (target, duration = 500) => {
 data-spollers="992,max" - спойлеры будут работать только на экранах меньше или равно 992px
 data-spollers="768,min" - спойлеры будут работать только на экранах больше или равно 768px
 Если нужно что бы в блоке открывался только один спойлер добавляем атрибут data-one-spoller
-*/ 
+*/
+
+// DynamicAdaptive
+
+useDynamicAdapt()
+
+// /DynamicAdaptive
 
 // /Functions.js
 
@@ -282,7 +289,7 @@ if(sliderScrollItems.length > 0){
     }
 }
 
-function sliders_bild_callback(params){}
+// function sliders_bild_callback(params){}
 
 if(document.querySelector('.sliderMain__body')){
     new Swiper('.sliderMain__body', {
@@ -350,4 +357,7 @@ window.onload = function(){ /*функция будет срабатывать �
             document.querySelector('.menuFooter__arrow_connected').classList.toggle('_active'); 
         }
     }
+
 }
+
+
