@@ -1,4 +1,5 @@
 @import './common.scss';
+@import './ui.scss';
 @import './fonts.scss';
 @import './mixins.scss';
 // Иконочные шрифт
@@ -446,6 +447,10 @@ body{
   flex: 1 1 auto;
   // .page__mainSlider
   &__mainSlider {}
+  // .page__advantages
+  &__advantages {}
+  // .page__products
+  &__products {}
 }
 .mainSlider {
   background:#fcf8f3;
@@ -682,7 +687,6 @@ body{
     }
     @media(max-width:$md3){
       grid-template:auto auto / auto 1fr;
-      
     }
   }
   // .advantages__icon
@@ -709,6 +713,191 @@ body{
   }
 }
 // /Advantages
+
+// Products
+.products {
+  @include adaptive-value("padding-bottom", 44, 30, 1);
+  // .products__container
+  &__container {}
+  // .products__title
+  &__title {
+    margin:0px 0px 32px / 40px *1em 0px;
+  }
+  // .products__items
+  &__items {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: repeat(auto-fit, minmax(285px, 1fr)); 
+  }
+  // .products__item
+  &__item {}
+  // .products__footer{
+  &__footer{
+      padding:32px 0px 0px 0px;
+      text-align: center;
+  }
+  &__more {
+    border:1px solid $orangeColor;
+    min-width:245px;
+  }
+}
+
+  // ._icon-share
+  ._icon-share {}
+  // ._icon-favorite
+  ._icon-favorite {}
+
+.itemProduct {
+  background:#f4f5f7;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  @media (any-hover:hover){
+    &:hover{
+      .itemProduct__actions{
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+  // .itemProduct__labels
+  &__labels {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    @include adaptive-value("right", 24, 10, 1);
+    @include adaptive-value("top", 24, 10, 1);
+  }
+  // .itemProduct__label
+  &__label {
+    flex: 0 0 48px;
+    width: 48px;
+    border-radius:50%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    color:$whiteColor;
+    font-weight:500;
+    &:not(:last-child){
+      margin:0px 0px 10px 0px;
+    }
+    // .itemProduct__label_sale
+    &_sale {
+      background:#e97171;
+    }
+    &_new{
+      background:#2ec1ac;
+    }
+  }
+  // .itemProduct__image
+  &__image {
+    padding:0px 0px 301px / 285px * 100% 0px;
+    
+  }
+  // .itemProduct__body
+  &__body {
+    flex: 1 1 auto;
+    padding: 16px 16px 30px 16px;
+    display: flex;
+    flex-direction: column;
+  }
+  // .itemProduct__content
+  &__content {
+    flex: 1 1 auto;
+  }
+  // .itemProduct__title
+  &__title {
+    @include adaptive-value("font-size", 24, 20, 1);
+    font-weight: 600;
+    line-height: 1.2;
+    margin:0px 0px 8px / 24px * 1em 0px;
+  }
+  // .itemProduct__text
+  &__text {
+    color:$grayColor;
+    line-height: 1.5;
+    margin:0px 0px 8px / 24px * 1em 0px;
+  }
+  // .itemProduct__prices
+  &__prices {
+    display: flex;
+    align-items:center;
+    flex-wrap: wrap;
+    line-height: 1.5;
+  }
+  // .itemProduct__price
+  &__price {
+    @include adaptive-value("font-size", 20, 16, 1);
+    font-weight: 600;
+    // .itemProduct__price_old
+    &_old {
+      @include adaptive-value("font-size", 16, 14, 1);
+      font-weight: normal;
+      margin:0px 0px 0px 16px;
+      color:#b0b0b0;
+      text-decoration: line-through;
+    }
+  }
+  // .itemProduct__actions
+  &__actions {
+    @media (any-hover:none){
+      padding:15px 0px 0px 0px;
+    }
+    @media(any-hover:hover){
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items:center;
+      transition: all 0.3s ease 0s;
+      background-color:rgba(58, 58, 58, 0.74);
+      z-index: 3;
+    }
+  }
+}
+.actionsProducts {
+  // .actionsProducts__body
+  &__body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  // .actionsProducts__button
+  &__button {
+    flex: 1 1 100%;
+    &:not(:last-child){
+      margin:0px 0px 24px 0px;
+    }
+  }
+  // .actionsProducts__link
+  &__link {
+    display: flex;
+    align-items:center;
+    color:inherit;
+    font-weight: 600;
+    transition: color 0.3s ease 0s;
+    &::before{
+      margin:0px 10px 0px 0px;
+      font-size: 16px;
+    }
+    @media (any-hover:hover){
+      color:$whiteColor;
+      &:hover{
+        color:$orangeColor;
+
+      }
+    }
+  }
+}
+
+
+// /Products
 
 // /Основная сетка===================================================
 
@@ -913,9 +1102,6 @@ body{
     }
   }
 }
-
-
-
 // /Footer
 
 

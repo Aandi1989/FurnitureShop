@@ -226,6 +226,116 @@ useDynamicAdapt()
 
 // /DynamicAdaptive
 
+// Load More Products
+async function getProducts(button){
+    if(!button.classList.contains('_hold')){
+        button.classList.add('_hold');
+        const file = "json/products.json";
+        let response = await fetch(file, {
+            method: "GET"
+        });
+        if(response.ok){
+            let result = await response.json();
+            loadProducts(result);
+            button.classList.remove('_hold');
+            button.remove();
+        }else{
+            alert("Ошибка")
+        }
+    }
+}
+
+function loadProducts(data){
+    const productsItems = document.querySelector('.products__items');
+    data.products.forEach(item => {
+        const productId = item.id;
+        const productUrl = item.url;
+        const productImage = item.image;
+        const productTitle = item.title;
+        const productText = item.text;
+        const productPrice = item.price;
+        const productOldPrice = item.priceOld;
+        const productShareUrl = item.shareUrl;
+        const productLikeUrl= item.likeUrl;
+        const productLabels = item.labels;
+
+        let productTemplateStart = `<article data-pid="${productId}" class="products__item itemProduct">`;
+        let productTemplateEnd = `</article>`;
+
+        let productTemplateLabels = '';
+        if(productLabels){
+            let productTemplateLabelsStart = `<div class="itemProduct__labels">`;
+            let productTemplateLabelsEnd = `</div>`;
+            let productTemplateLabelsContent = '';
+
+            productLabels.forEach(labelItem => {
+                productTemplateLabelsContent += `<div class="itemProduct__label itemProduct__label_${labelItem.type}">${labelItem.value}</div>`
+            });
+
+            productTemplateLabels += productTemplateLabelsStart;
+            productTemplateLabels += productTemplateLabelsContent;
+            productTemplateLabels += productTemplateLabelsEnd;
+        }
+
+        let productTemplateImage = `
+        <a href="${productUrl}" class="itemProduct__image _ibg">
+            <img src="static/images/products/${productImage}" alt="${productTitle}">
+        </a>
+        `;
+
+            let productTemplateBodyStart = `<div class="itemProduct__body">`;
+            let productTemplateBodyEnd = `</div>`;
+
+            let productTemplateContent = `
+            <div class="itemProduct__content">
+                <h3 class="itemProduct__title">${productTitle}</h3>  
+                <div class="itemProduct__text">${productText}</div>  
+            </div>
+            `;
+
+            let productTemplatePrices = '';
+            let productTemplatePricesStart = `<div class="itemProduct__prices">`;
+            let productTemplatePricesCurrent = `<div class="itemProduct__price">Rp ${productPrice}</div>`;
+            let productTemplatePricesOld = `<div class="itemProduct__price itemProduct__price_old">Rp ${productOldPrice}</div>`;
+            let productTemplatePricesEnd = `</div>`;
+
+            productTemplatePrices = productTemplatePricesStart;
+            productTemplatePrices += productTemplatePricesCurrent;
+            if(productOldPrice){
+                productTemplatePrices += productTemplatePricesOld;
+            }
+            productTemplatePrices += productTemplatePricesEnd;
+
+            let productTemplateAction = `
+            <div class="itemProduct__actions actionsProduct">
+                <div class="actionsProducts__body">
+                    <a href="" class="actionsProducts__button btn btn_white">Add to cart</a>
+                    <a href="${productShareUrl}" class="actionsProducts__link _icon-share">Share</a>
+                    <a href="${productLikeUrl}" class="actionsProducts__link _icon-favorite">Like</a>
+                </div>
+            </div>
+            `;
+
+            let productTemplateBody = '';
+            productTemplateBody += productTemplateBodyStart;
+            productTemplateBody += productTemplateContent;
+            productTemplateBody += productTemplatePrices;
+            productTemplateBody += productTemplateAction;
+            productTemplateBody += productTemplateBodyEnd;
+
+            let productTemplate = '';
+            productTemplate += productTemplateStart;
+            productTemplate += productTemplateLabels;
+            productTemplate += productTemplateImage;
+            productTemplate += productTemplateBody;
+            productTemplate += productTemplateEnd;
+
+            productsItems.insertAdjacentHTML('beforeend', productTemplate);
+    });
+    ibg(); // вызываем чтобы добавился класс _ibg для подгруженных элементов 
+}
+// /Load More Products
+
 // /Functions.js
 
 // Swiper ================================================================================================
@@ -355,6 +465,11 @@ window.onload = function(){ /*функция будет срабатывать �
         }
         if(targetElement.classList.contains('menuFooter__title_connected')){
             document.querySelector('.menuFooter__arrow_connected').classList.toggle('_active'); 
+        }
+        // Подгрузка файлов из json файла
+        if(targetElement.classList.contains('products__more')){
+            getProducts(targetElement);
+            e.preventDefault();
         }
     }
 
