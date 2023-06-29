@@ -43,6 +43,13 @@ $maxWidthContainer:1270;
     text-align: center;
 }
 
+._flyImage._ibg{
+    opacity: 1;
+    position: fixed;
+    z-index: 100;
+    transition: all 1s ease 0s;
+}
+
 .sliderArrows {
     display: grid;
     grid-template-columns: repeat(2, 48px);

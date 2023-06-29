@@ -27,24 +27,24 @@ function ibg(){
     }
     ibg();
 
-// Spollers
+// Functions.js --- Spollers
 const spollersArray = document.querySelectorAll('[data-spollers]');
 if(spollersArray.length > 0){
-    // Получение обычных спойлеров
+    // Functions.js --- Spollers---Получение обычных спойлеров
     const spollersRegular = Array.from(spollersArray).filter(function(item, index, self){
         return !item.dataset.spollers.split(",")[0];
     });
-    // Инициализация обычных спойлеров
+    // Functions.js --- Spollers---Инициализация обычных спойлеров
     if(spollersRegular.length > 0){
         initSpollers(spollersRegular);
     }
 
-    // Получение спойлеров с медиа запросами
+    // Functions.js --- Spollers---Получение спойлеров с медиа запросами
     const spollersMedia = Array.from(spollersArray).filter(function(item, index, self){
         return item.dataset.spollers.split(",")[0];
     });
 
-    // Инициализация спойлеров с медиа запросами
+    // Functions.js --- Spollers---Инициализация спойлеров с медиа запросами
     if(spollersMedia.length > 0){
         const breakpointsArray = [];
         spollersMedia.forEach(item => {
@@ -57,7 +57,7 @@ if(spollersArray.length > 0){
             breakpointsArray.push(breakpoint);
         });
 
-        // Получаем уникальные брейкпоинты
+        // Functions.js --- Spollers---Получаем уникальные брейкпоинты
         let mediaQueries = breakpointsArray.map(function(item){
             return '(' + item.type + "-width: " + item.value + "px)," + item.value + ',' + item.type;
         });
@@ -66,14 +66,14 @@ if(spollersArray.length > 0){
             console.log(mediaQueries)
         });
 
-        // Работаем с каждым брейкпоинтом 
+        // Functions.js --- Spollers---Работаем с каждым брейкпоинтом 
         mediaQueries.forEach(breakpoint => {
             const paramsArray = breakpoint.split(",");
             const mediaBreakpoint = paramsArray[1];
             const mediaType = paramsArray[2];
             const matchMedia = window.matchMedia(paramsArray[0]);
 
-            // Объекты с нужными условиями
+            // Functions.js --- Spollers---Объекты с нужными условиями
             const spollersArray = breakpointsArray.filter(function(item) {
                 if(item.value === mediaBreakpoint && item.type === mediaType){
                     return true;
@@ -86,7 +86,7 @@ if(spollersArray.length > 0){
             initSpollers(spollersArray, matchMedia);
         });
     }
-    //  Инициализация
+    //  Functions.js --- Spollers---Инициализация
     function initSpollers(spollersArray, matchMedia = false){
         spollersArray.forEach(spollersBlock => {
             spollersBlock = matchMedia ? spollersBlock.item : spollersBlock;
@@ -101,7 +101,7 @@ if(spollersArray.length > 0){
             }
         });
     }
-    // Работа с контентом 
+    // Functions.js --- Spollers---Работа с контентом 
     function initSpollerBody(spollersBlock, hideSpollerBody = true){
         const spollerTitles = spollersBlock.querySelectorAll('[data-spoller]');
         if(spollerTitles.length > 0){
@@ -144,7 +144,7 @@ if(spollersArray.length > 0){
 }
 
 // =============================================================
-// SlideToggle
+// Functions.js --- Spollers---SlideToggle
 let _slideUp = (target, duration = 500) => {
     if(!target.classList.contains('_slide')){
         target.classList.add('_slide');
@@ -220,13 +220,13 @@ data-spollers="768,min" - спойлеры будут работать толь�
 Если нужно что бы в блоке открывался только один спойлер добавляем атрибут data-one-spoller
 */
 
-// DynamicAdaptive
+// Functions.js --- DynamicAdaptive
 
 useDynamicAdapt()
 
 // /DynamicAdaptive
 
-// Load More Products
+// Functions.js --- Load More Products
 async function getProducts(button){
     if(!button.classList.contains('_hold')){
         button.classList.add('_hold');
@@ -334,7 +334,114 @@ function loadProducts(data){
     });
     ibg(); // вызываем чтобы добавился класс _ibg для подгруженных элементов 
 }
-// /Load More Products
+// /Functions.js ---Load More Products
+
+// Functions.js --- Add products to cart
+function addToCart(productButton, productId){
+    if(!productButton.classList.contains('_hold')){
+            productButton.classList.add('_hold');
+            productButton.classList.add('_fly');
+
+            const cart = document.querySelector('.cartHeader__icon');
+            const product = document.querySelector(`[data-pid="${productId}"]`);
+            const productImage = product.querySelector('.itemProduct__image');
+
+            const productImageFly = productImage.cloneNode(true);
+
+            // получаем размеры и координаты картинки товара
+            const productImageFlyWidth = productImage.offsetWidth; // ширина оригинальной картинки
+            const productImageFlyHeight = productImage.offsetHeight; // высота оригинальной картинки
+            const productImageFlyTop = productImage.getBoundingClientRect().top; // позиция сверху
+            const productImageFlyLeft = productImage.getBoundingClientRect().left; // позиция слева
+
+            // применение полученых размеров для нашего клона
+            productImageFly.setAttribute('class', '_flyImage _ibg');
+            productImageFly.style.cssText=
+            `
+            left:${productImageFlyLeft}px;
+            top:${productImageFlyTop}px;
+            width:${productImageFlyWidth}px;
+            height:${productImageFlyHeight}px;
+            `;
+
+            document.body.append(productImageFly);
+
+            const cartFlyLeft = cart.getBoundingClientRect().left;
+            const cartFlyTop = cart.getBoundingClientRect().top;
+
+            productImageFly.style.cssText =
+            `
+            left:${cartFlyLeft}px;
+            top:${cartFlyTop}px;
+            width:0px;
+            height:0px;
+            opacity:0;
+            `;
+
+            productImageFly.addEventListener('transitionend', function(){
+                if(productButton.classList.contains('_fly')){
+                    productImageFly.remove();
+                    updateCart(productButton, productId);
+                    productButton.classList.remove('_fly');
+                }
+            })
+    }
+}
+
+function updateCart(productButton, productId, productAdd = true){
+    const cart = document.querySelector('.cartHeader');
+    const cartIcon = cart.querySelector('.cartHeader__icon');
+    const cartQuantity = cartIcon.querySelector('span');
+    const cartProduct = document.querySelector(`[data-cart-pid="${productId}"]`);
+    const cartList = document.querySelector('.cartList');
+
+    //Добавляем
+    if(productAdd){
+        if(cartQuantity){
+            cartQuantity.innerHTML = ++cartQuantity.innerHTML;
+        }else{
+            cartIcon.insertAdjacentHTML('beforeend',`<span>1</span>`);
+        }
+
+        if(!cartProduct){
+            const product = document.querySelector(`[data-pid="${productId}"]`);
+            const cartProductImage = product.querySelector('.itemProduct__image').innerHTML;
+            const cartProductTitle = product.querySelector('.itemProduct__title').innerHTML;
+            const cartProductContent = `
+            <a href="" class="cartList__image _ibg">${cartProductImage}</a>
+            <div class="cartList__body">
+                <a href="" class="cartList__title">${cartProductTitle}</a>
+                <div class="cartList__quantity">Quantity: <span>1</span></div>
+                <a href="" class="cartList__delete">Delete</a>
+            </div>`;
+            cartList.insertAdjacentHTML('beforeend', `<li data-cart-pid="${productId}" class="cartList__item">${cartProductContent}</li>`)
+        }else{
+            const cartProductQuantity = cartProduct.querySelector('.cartList__quantity span');
+            cartProductQuantity.innerHTML = ++cartProductQuantity.innerHTML;
+        }
+
+        // После всех действий
+        productButton.classList.remove('_hold');
+        ibg();
+    }else{
+        const cartProductQuantity = cartProduct.querySelector('.cartList__quantity span');
+        cartProductQuantity.innerHTML = --cartProductQuantity.innerHTML;
+        if(!parseInt(cartProductQuantity.innerHTML)){
+            cartProduct.remove();
+        }
+
+        const cartQuantityValue = --cartQuantity.innerHTML;
+
+        if(cartQuantityValue){
+            cartQuantity.innerHTML = cartQuantityValue;
+        } else {
+            cartQuantity.remove();
+            cart.classList.remove('_active')
+        }
+    }
+}
+
+// /Functions.js ---Add products to cart
 
 // /Functions.js
 
@@ -471,6 +578,29 @@ window.onload = function(){ /*функция будет срабатывать �
             getProducts(targetElement);
             e.preventDefault();
         }
+        // Добавление товара в корзину
+        if(targetElement.classList.contains('actionsProducts__button')){
+            const productId = targetElement.closest('.itemProduct').dataset.pid;
+            addToCart(targetElement, productId);
+            ibg();
+            e.preventDefault();
+        }
+        // Появление  списка товаров корзины
+        if(targetElement.classList.contains('cartHeader__icon') || targetElement.closest('.cartHeader__icon')){
+            if(document.querySelector('.cartList').children.length > 0){
+                document.querySelector('.cartHeader').classList.toggle('_active');
+            }
+            e.preventDefault();
+        }else if(!targetElement.closest('.cartHeader') && !targetElement.classList.contains('actionsProduct__button')){
+            document.querySelector('.cartHeader').classList.remove('_active')
+        }
+        // Удаление из корзины
+        if(targetElement.classList.contains('cartList__delete')){
+            const productId = targetElement.closest('.cartList__item').dataset.cartPid;
+            updateCart(targetElement, productId, false);
+            e.preventDefault();
+        }
+
     }
 
     // Header

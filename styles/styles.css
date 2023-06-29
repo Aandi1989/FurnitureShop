@@ -120,6 +120,13 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+._flyImage._ibg {
+  opacity: 1;
+  position: fixed;
+  z-index: 100;
+  transition: all 1s ease 0s;
+}
+
 .sliderArrows {
   display: grid;
   grid-template-columns: repeat(2, 48px);
@@ -591,6 +598,85 @@ body._lock {
   color: #fff;
   font-size: 12px;
 }
+.cartHeader__body {
+  background: #f4f5f7;
+  border: 1px solid #e0e0e0;
+  position: absolute;
+  top: 60px;
+  right: 0px;
+  padding: 15px;
+  width: 300px;
+  z-index: 5;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease 0s;
+  transform: translate(0px, 20px);
+}
+._active .cartHeader__body {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0px, 0px);
+}
+@media (max-width: 990px) {
+  .cartHeader__body {
+    top: 50px;
+  }
+}
+@media (max-width: 767px) {
+  .cartHeader__body {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 100%;
+  }
+}
+.cartList {
+  overflow: auto;
+  max-height: 200px;
+}
+.cartList__image {
+  flex: 0 0 100px;
+  height: 100px;
+}
+.cartList__body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px 0px 0px 10px;
+}
+.cartList__title {
+  color: inherit;
+  font-weight: 600;
+  transition: color 0.3s ease 0s;
+  margin: 0px 0px 0.3125em 0px;
+}
+@media (any-hover: hover) {
+  .cartList__title:hover {
+    color: #E89F71;
+  }
+}
+.cartList__quantity {
+  font-size: 14px;
+  margin: 0px 0px 0.3571428571em 0px;
+}
+.cartList__delete {
+  color: red;
+  font-size: 14px;
+}
+@media (any-hover: hover) {
+  .cartList__delete:hover {
+    text-decoration: underline;
+  }
+}
+.cartList__item {
+  display: flex;
+  align-items: flex-start;
+}
+.cartList__item:not(:last-child) {
+  margin: 0px 0px 15px 0px;
+}
+
 .iconMenu {
   display: none;
 }
@@ -1022,6 +1108,10 @@ body._lock {
   border: 1px solid #E89F71;
   min-width: 245px;
 }
+.products__more._hold {
+  opacity: 0.4;
+  cursor: default;
+}
 
 .itemProduct {
   background: #f4f5f7;
@@ -1160,6 +1250,10 @@ body._lock {
 }
 .actionsProducts__button:not(:last-child) {
   margin: 0px 0px 24px 0px;
+}
+.actionsProducts__button._hold {
+  opacity: 0.4;
+  cursor: default;
 }
 .actionsProducts__link {
   display: flex;
