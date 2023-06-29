@@ -529,6 +529,8 @@ body{
   &__advantages {}
   // .page__products
   &__products {}
+  // .page__rooms
+  &__rooms {}
 }
 .mainSlider {
   background:#fcf8f3;
@@ -982,9 +984,110 @@ body{
     }
   }
 }
-
-
 // /Products
+
+// Rooms Slider
+.rooms {
+  background:#fcf8f3;
+  @include adaptive-value("padding-top", 44, 30, 1);
+  @include adaptive-value("padding-bottom", 44, 30, 1);
+  // .rooms__container
+  &__container {
+    @media(min-width:$md2){
+      display: flex;
+    }
+  }
+  // .rooms__body
+  &__body {
+    flex: 0 0 465 / 1240 *100%;
+    position: relative;
+    z-index: 5;
+    align-self:center;
+    @media(min-width:$md2){
+      @include adaptive-value("padding-right", 80, 30, 1);
+    }
+  }
+  // .rooms__title
+  &__title {
+    &:not(:last-child){
+      margin:0px 0px 8px / 40px * 1em 0px;
+    }
+    text-align: left;
+  }
+  // .rooms__text
+  &__text {
+    line-height: 1.5;
+    font-weight: 500;
+    &:not(:last-child){
+      margin:0px 0px 24px 0px;
+    }
+  }
+  // .rooms__button
+  &__button {
+    background:$orangeColor;
+    color:$whiteColor;
+    min-width: 180px;
+    @media(any-hover:hover){
+      &:hover{
+        background-color:#e38a52;
+      }
+    }
+  }
+  // .rooms__slider
+  &__slider {
+    flex: 1 1 auto;
+    min-width: 0;
+    align-self:flex-start;
+  }
+}
+
+.sliderRooms {
+  // .sliderRooms__body
+  &__body {}
+  // .sliderRooms__slide
+  &__slide {
+    width: 372px;
+    position: relative;
+    overflow: hidden;
+    @include adaptive-value("min-height", 585, 400, 1);
+  }
+  // .sliderRooms__image
+  &__image{
+    transition: height 0.8s ease 0s;
+    height: 100%;
+    border:1px solid red;
+  }
+  // .sliderRooms__content
+  &__content {}
+  // .sliderRooms__label
+  &__label {}
+  // .sliderRooms__title
+  &__title {}
+  // .sliderRooms__arrows
+  &__arrows {}
+  // .sliderRooms__dots
+  &__dots {}
+}
+.labelSlider {
+  // .labelSlider__number
+  &__number {}
+  // .labelSlider__line
+  &__line {}
+  // .labelSlider__text
+  &__text {}
+}
+.sliderArrows {
+}
+.sliderArrow {
+  // .sliderArrow_white
+  &_white {}
+  // .sliderArrow_prev
+  &_prev {}
+  // .sliderArrow_next
+  &_next {}
+}
+
+// /Rooms Slider
 
 // /Основная сетка===================================================
 

@@ -508,6 +508,7 @@ if(sliderScrollItems.length > 0){
 
 // function sliders_bild_callback(params){}
 
+// Main slider (the first one)
 if(document.querySelector('.sliderMain__body')){
     new Swiper('.sliderMain__body', {
         observer:true,
@@ -529,6 +530,32 @@ if(document.querySelector('.sliderMain__body')){
         navigation:{
             nextEl:'.sliderMain .sliderArrow_next',
             prevEl:'.sliderMain .sliderArrow_prev',
+        }
+    });
+}
+
+// Rooms slider (the second one)
+if(document.querySelector('.sliderRooms__body')){
+    new Swiper('.sliderRooms__body', {
+        observer:true,
+        observeParents:true,
+        slidesPerView:'auto',
+        spaceBetween:24,
+        speed:800,
+        loop:true,
+        watchOverflow:true,
+        loopAdditionalSlides:5,
+        preloadImages:false,
+        parallax:true,
+        //Dots
+        pagination:{
+            el:'.sliderRooms__dots',
+            clickable:true,
+        },
+        //Arrows
+        navigation:{
+            nextEl:'.sliderRooms .sliderArrow_next',
+            prevEl:'.sliderRooms .sliderArrow_prev',
         }
     });
 }
