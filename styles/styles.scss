@@ -1006,6 +1006,9 @@ body{
     @media(min-width:$md2){
       @include adaptive-value("padding-right", 80, 30, 1);
     }
+    @media (max-width:$md2){
+      margin:0px 0px 30px 0px;
+    }
   }
   // .rooms__title
   &__title {
@@ -1038,41 +1041,138 @@ body{
     flex: 1 1 auto;
     min-width: 0;
     align-self:flex-start;
+    @media (max-width:$md4){
+      margin:0px -15px;
+    }
   }
 }
 
 .sliderRooms {
+  position: relative;
+  .swiper-slide{
+    height: 0; // без этого свойства не срабатывало .sliderRooms__image {height: 100%;} и слайд схлопывался
+  }
   // .sliderRooms__body
-  &__body {}
+  &__body {
+    overflow: visible;
+    position: relative;
+    &::before{
+      content:'';
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 100vw;
+      left: 0;
+      background-color:#fcf8f3;
+      z-index: 2;
+      transform: translate(-100%,0px);
+    }
+  }
   // .sliderRooms__slide
   &__slide {
     width: 372px;
     position: relative;
     overflow: hidden;
     @include adaptive-value("min-height", 585, 400, 1);
+    &.swiper-slide-active{
+      .sliderRooms__image{
+        height: 100%;
+      }
+    }
+    @media (max-width:$md4){
+      width: 100%;
+    }
   }
   // .sliderRooms__image
   &__image{
     transition: height 0.8s ease 0s;
     height: 100%;
-    border:1px solid red;
+    @media (min-width:$md3){
+      height: 83%;
+    }
   }
   // .sliderRooms__content
-  &__content {}
+  &__content {
+    position: absolute;
+    color:inherit;
+    max-width: 240px;
+    @include adaptive-value("left", 24, 15, 1);
+    @include adaptive-value("bottom", 24, 15, 1);
+    @include adaptive-value("padding", 32, 15, 1);
+    // background:rgba(255, 255, 255, 0.9);
+    /*Если браузер поддерживает backdrop-filter*/
+    @supports ((-webkit-backdrop-filter: blur(31px)) or (backdrop-filter: blur(31px))){
+      background:rgba(255 ,255, 255, 0.72);
+      backdrop-filter:blur(31px);
+      }
+    &::before{
+      position: absolute;
+      bottom:0;
+      right: 0;
+      transform: translate(100%,0px);
+      width: 48px;
+      height: 48px;
+      background-color:$orangeColor;
+      color:$whiteColor;
+      display: flex;
+      justify-content: center;
+      align-items:center;
+    }
+  }
   // .sliderRooms__label
   &__label {}
   // .sliderRooms__title
-  &__title {}
+  &__title {
+    font-weight: 600;
+    font-family: 'Roboto Flex';
+    @include adaptive-value("font-size", 28, 24, 1)
+  }
   // .sliderRooms__arrows
-  &__arrows {}
+  &__arrows {
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    transform: translate(0px, -50%);
+    width: calc(100% - 48px);
+    left: 24px;
+    z-index: 5;
+    justify-content: space-between;
+    @media (min-width: $md1){
+      left: -24px;
+      width: calc(100% + 48px);
+    }
+  }
   // .sliderRooms__dots
-  &__dots {}
+  &__dots {
+    @media (min-width:$md3){
+      position: absolute;
+      bottom:30px !important;
+      width: 100%;
+      left: 396px !important;
+    }
+    @media (max-width:$md3){
+      justify-content: center;
+      padding:15px 0px 0px 0px;
+    }
+  }
 }
 .labelSlider {
+  display: grid;
+  color:$darkGrayColor;
+  grid-template-columns: auto 27px auto;
+  gap: 8px;
+  align-items:center;
+  justify-content: start;
+  &:not(:last-child){
+    margin:0px 0px 8px 0px;
+  }
   // .labelSlider__number
   &__number {}
   // .labelSlider__line
-  &__line {}
+  &__line {
+    height: 1px;
+    background-color:$darkGrayColor;
+  }
   // .labelSlider__text
   &__text {}
 }
