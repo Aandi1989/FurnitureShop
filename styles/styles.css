@@ -1499,6 +1499,104 @@ body._lock {
   height: 1px;
   background-color: #616161;
 }
+.tips {
+  padding-top: 44px;
+  padding-bottom: 44px;
+}
+@media (max-width: 1270px) {
+  .tips {
+    padding-top: calc(30px + 14 * ((100vw - 320px) / 950));
+  }
+}
+@media (max-width: 1270px) {
+  .tips {
+    padding-bottom: calc(30px + 14 * ((100vw - 320px) / 950));
+  }
+}
+.tips__title {
+  margin: 0px 0px 0.8em 0px;
+}
+
+.sliderTips {
+  position: relative;
+}
+.sliderTips__body {
+  overflow: hidden;
+  padding: 15px 20px;
+  margin: 0 -30px;
+}
+.sliderTips__slide {
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease 0s;
+  height: auto;
+}
+@media (any-hover: hover) {
+  .sliderTips__slide:hover {
+    box-shadow: 0 0 32px rgba(97, 97, 97, 0.2);
+  }
+}
+.sliderTips__image {
+  padding: 0px 0px 64.1943734015% 0px;
+}
+.sliderTips__content {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  flex: 1 1 auto;
+  align-items: flex-start;
+}
+.sliderTips__title {
+  flex: 1 1 auto;
+  color: inherit;
+  font-weight: 600;
+  line-height: 1.2;
+  font-size: 24px;
+  transition: color 0.3s ease 0s;
+}
+@media (max-width: 1270px) {
+  .sliderTips__title {
+    font-size: calc(18px + 6 * ((100vw - 320px) / 950));
+  }
+}
+.sliderTips__title:not(:last-child) {
+  margin: 0px 0px 0.3333333333em 0px;
+}
+@media (any-hover: hover) {
+  .sliderTips__title:hover {
+    color: #E89F71;
+  }
+}
+.sliderTips__text {
+  color: #898989;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.sliderTips__dots {
+  padding-top: 25px;
+  justify-content: center;
+}
+@media (max-width: 1270px) {
+  .sliderTips__dots {
+    padding-top: calc(0px + 25 * ((100vw - 320px) / 950));
+  }
+}
+.sliderTips__arrows {
+  position: absolute;
+  top: 45%;
+  transform: translate(0px, -50%);
+  width: calc(100% - 48px);
+  left: 24px;
+  z-index: 5;
+  justify-content: space-between;
+}
+@media (min-width: 1282px) {
+  .sliderTips__arrows {
+    left: -32px;
+    width: calc(100% + 67px);
+  }
+}
+
 .footer__body {
   border-top: 1px solid #D8D8D8;
   display: grid;

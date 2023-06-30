@@ -560,6 +560,29 @@ if(document.querySelector('.sliderRooms__body')){
     });
 }
 
+// Tips slider (the third one)
+if(document.querySelector('.sliderTips__body')){
+    new Swiper('.sliderTips__body', {
+        observer:true,
+        observeParents:true,
+        slidesPerView:3,
+        spaceBetween:32,
+        speed:800,
+        loop:true,
+        watchOverflow:true,
+        //Dots
+        pagination:{
+            el:'.sliderTips__dots',
+            clickable:true,
+        },
+        //Arrows
+        navigation:{
+            nextEl:'.sliderTips .sliderArrow_next',
+            prevEl:'.sliderTips .sliderArrow_prev',
+        }
+    });
+}
+
 // /Swiper ================================================================================================
 
 window.onload = function(){ /*функция будет срабатывать когда весь контент на странице загрузится*/
