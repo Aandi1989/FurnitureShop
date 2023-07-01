@@ -533,6 +533,8 @@ body{
   &__rooms {}
   // .page__tips
   &__tips {}
+  // .page__furniture
+  &__furniture {}
 }
 .mainSlider {
   background:#fcf8f3;
@@ -1280,6 +1282,109 @@ body{
   }
 }
 // /Tips Slider
+
+// Furniture
+.furniture {
+  @include adaptive-value ("padding-bottom", 85, 40, 1);
+  // .furniture__container
+  &__container {}
+  // .furniture__label
+  &__label {
+    text-align: center;
+    color: $darkGrayColor;
+    line-height: 1.5;
+    @include adaptive-value("font-size", 20, 16, 1);
+    &:not(:last-child){
+      margin:0px 0px 8px / 20px * 1em 0px;
+    }
+  }
+  // .furniture__title
+  &__title {
+    margin:0px 0px 32px / 40px * 1em 0px;
+  }
+  // .furniture__body
+  &__body {
+    position: relative;
+    @media (any-hover:none){ // св-во только для тач устройств
+      overflow: auto; // включаем горизантяльный скрол чтобы галерею можно было проскролить пальцем
+      -webkit-overflow-scrolling:touch;
+    }
+  }
+  // .furniture__items
+  &__items {
+    display: grid;
+    grid-template-columns: auto;
+    grid-auto-flow: column;
+    align-items:center;
+    gap: 16px;
+    @media (any-hover : hover){
+      justify-content: center;
+    }
+  }
+  // .furniture__column
+  &__column {
+    display: flex;
+    flex-wrap: wrap;
+    align-items:center;
+    margin: 0px -8px;
+    &:first-child{
+      justify-content: flex-end;
+    }
+  }
+  // .furniture__row
+  &__row {
+    display: inline-grid;
+    padding:0px 8px;
+    gap: 16px;
+    grid-template-columns: auto;
+    grid-auto-flow: column;
+    &:not(:last-child){
+      margin:0px 0px 16px 0px;
+    }
+  }
+}
+
+.rowFurniture {
+  // .rowFurniture_leftTop
+  &_leftTop {
+    justify-content:end;
+    align-items:end;
+  }
+  // .rowFurniture_leftBottom
+  &_leftBottom {
+    justify-content: end;
+    align-items:start;
+  }
+  // .rowFurniture_center
+  &_center {
+    display: block;
+  }
+  // .rowFurniture_rightTop
+  &_rightTop {
+    align-items:end;
+
+  }
+  // .rowFurniture_rightBottom
+  &_rightBottom {
+    align-items:start;
+  }
+  // .rowFurniture__item
+  &__item {
+    @media (any-hover: hover){
+      img{
+        transition: all 0.8s ease 0s;
+        filter:grayscale(1);
+      }
+      &:hover{
+        img{
+          filter:grayscale(0)
+        }
+      }
+    }
+  }
+}
+
+// /Furniture
 
 // /Основная сетка===================================================
 
