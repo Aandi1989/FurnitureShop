@@ -565,8 +565,8 @@ if(document.querySelector('.sliderTips__body')){
     new Swiper('.sliderTips__body', {
         observer:true,
         observeParents:true,
-        slidesPerView:3,
-        spaceBetween:32,
+        slidesPerView:1.1,
+        spaceBetween:15,
         speed:800,
         loop:true,
         watchOverflow:true,
@@ -579,6 +579,18 @@ if(document.querySelector('.sliderTips__body')){
         navigation:{
             nextEl:'.sliderTips .sliderArrow_next',
             prevEl:'.sliderTips .sliderArrow_prev',
+        },
+        breakpoints:{
+        // when window width is >= 768px  
+        768:{
+            slidesPerView:2,
+            spaceBetween:20
+        },
+        // when window width is >= 992px
+        990:{
+            slidesPerView:3,
+            spaceBetween:32
+        }
         }
     });
 }

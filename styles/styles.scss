@@ -1262,7 +1262,7 @@ body{
   }
   // .sliderTips__arrows
   &__arrows {
-    // pointer-events: none;
+    pointer-events: none;
     position: absolute;
     top: 45%;
     transform: translate(0px, -50%);
@@ -1273,6 +1273,9 @@ body{
     @media (min-width: $md1){
       left: -32px;
       width: calc(100% + 67px);
+    }
+    @media(max-width:$md3){
+      display: none;
     }
   }
 }

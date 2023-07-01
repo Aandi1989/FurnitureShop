@@ -1582,6 +1582,7 @@ body._lock {
   }
 }
 .sliderTips__arrows {
+  pointer-events: none;
   position: absolute;
   top: 45%;
   transform: translate(0px, -50%);
@@ -1594,6 +1595,11 @@ body._lock {
   .sliderTips__arrows {
     left: -32px;
     width: calc(100% + 67px);
+  }
+}
+@media (max-width: 767px) {
+  .sliderTips__arrows {
+    display: none;
   }
 }
 
