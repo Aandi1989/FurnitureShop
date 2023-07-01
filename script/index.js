@@ -446,10 +446,8 @@ function updateCart(productButton, productId, productAdd = true){
 // Furniture Gallery
 const furniture = document.querySelector('.furniture__body');
 if(furniture && !isMobile()){
-    console.log("furniture && !isMobile()")
     const furnitureItems = document.querySelector('.furniture__items');
     const furnitureColumn = document.querySelectorAll('.furniture__column');
-    console.log(furnitureColumn)
 
     // Скорость анимации
     const speed = furniture.dataset.speed;
